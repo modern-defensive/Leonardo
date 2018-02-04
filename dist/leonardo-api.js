@@ -8058,7 +8058,9 @@ launcher.addEventListener('click', function (e) {
     f && toggleView();
     e.stopPropagation();
 });
-window.document.body.appendChild(launcher);
+document.addEventListener('DOMContentLoaded', function () {
+    window.document.body.appendChild(launcher);
+}, false);
 var timeout;
 function checkIframeLoaded() {
     var iframeDoc = f.contentDocument || f.contentWindow ? f.contentWindow.document : {};
@@ -8090,7 +8092,9 @@ if (!window.Leonardo.storage.getNoUI()) {
         overflow: 'visible',
         zIndex: 2147483646,
     });
-    document.body.appendChild(f);
+    document.addEventListener('DOMContentLoaded', function () {
+        window.document.body.appendChild(f);
+    }, false);
     checkIframeLoaded();
 }
 
