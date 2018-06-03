@@ -11,10 +11,11 @@ declare const Object;
 polifylls();
 
 //Init Configuration
-window.Leonardo = window.Leonardo || {};
+export const Leonardo: ILeonardo = window.Leonardo = window.Leonardo || {} as ILeonardo;
+
 const configuration = leoConfiguration();
-const storage = new Storage();
-Object.assign(window.Leonardo || {}, configuration, {storage});
+const storage: Storage = new Storage();
+Object.assign(Leonardo || {}, configuration, {storage});
 Leonardo.loadSavedStates();
 
 // Init Sinon
@@ -85,7 +86,7 @@ function checkIframeLoaded() {
 }
 
 //Init UI
-if (!window.Leonardo.storage.getNoUI()) {
+if (!Leonardo.storage.getNoUI()) {
   f = document.createElement('iframe');
   f.width = '100%';
   f.height = '100%';
@@ -108,4 +109,34 @@ if (!window.Leonardo.storage.getNoUI()) {
   }, false);
 
   checkIframeLoaded();
+}
+
+export interface ILeonardo {
+    addState: any;
+    addStates: any;
+    getActiveStateOption: any;
+    getStates: any,
+    deactivateState: any;
+    toggleActivateAll: any;
+    activateStateOption: any;
+    addScenario: any;
+    addScenarios: any;
+    getScenario: any;
+    getScenarios: any;
+    setActiveScenario: any;
+    getRecordedStates: any;
+    getRequestsLog: any;
+    loadSavedStates: any;
+    addSavedState: any;
+    addOrUpdateSavedState: any;
+    fetchStatesByUrlAndMethod: any;
+    removeState: any;
+    removeOption: any;
+    onStateChange: any;
+    statesChanged: any;
+    toggleConsoleOutput: any;
+    _logRequest: any;
+    _jsonpCallbacks: any;
+    storage: Storage;
+    get: any;
 }
